@@ -1,13 +1,18 @@
+require 'inject_new'
+
 describe Array do
   
   context 'with a block' do
 
     it 'can add numbers' do
       expect([1,2,3,4,5].inject { |memo, element| memo + element} ).to eq 15
+      expect([1,2,3,4,5].inject_new { |memo, element| memo + element} ).to eq 15
+
     end
 
     it 'can subtract numbers' do
       expect([1,2,3,4,5].inject { |memo, n| memo - n } ).to eq -13
+      expect([1,2,3,4,5].inject_new { |memo, n| memo - n } ).to eq -13
     end
 
     it 'can multiply numbers' do
