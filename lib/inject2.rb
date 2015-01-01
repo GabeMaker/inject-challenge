@@ -1,6 +1,23 @@
 class Array
 
-  def inject2 (argument=nil, &block)
+  def inject2 (argument=nil, arg2=nil, &block)
+
+    if arg2 != nil
+
+      if arg2 == :+
+        block = Proc.new { |memo, item| memo + item}
+      elsif arg2 == :-
+        block = Proc.new { |memo, item| memo - item}
+      elsif arg2 == :*
+        block = Proc.new { |memo, item| memo * item}
+      end
+
+      memo = argument
+      self.each do |item|
+        memo = block.call(memo, item)
+      end
+      return memo
+    end
 
     # # methods need to accept Float objects
     # # it doesn't look like we need to convert back though:

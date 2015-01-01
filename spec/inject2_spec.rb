@@ -62,15 +62,26 @@ describe Array do
 
   context 'with an argument and with a symbol' do
 
-    xit 'can add with a starting point and a symbol' do
-      expect( [1,3,5].inject(5,:+) ).to eq 14
+    it 'can add with a starting point and a symbol' do
+      # expect( [1,2,3,4,5].inject(5,:+) ).to eq 20
+      expect( [1,2,3,4,5].inject2(5,:+) ).to eq 20
     end
+
+    it 'can subtract with a starting point and a symbol' do
+      # expect( [1,2,3,4,5].inject(5,:-) ).to eq -10
+      expect( [1,2,3,4,5].inject2(5,:-) ).to eq -10
+    end
+
+    it 'can multiply with a starting point and a symbol' do
+      # expect( [1,2,3,4,5].inject(5,:*) ).to eq 600
+      expect( [1,2,3,4,5].inject2(5,:*) ).to eq 600
+      end    
   end
 
-  context 'a' do
+  context 'letter functionality from inject ruby docs' do
 
-    xit 'can find the longest word' do
-      longest = %w{ abe gabe gabby }.inject do |memo, word|
+    it 'can find the longest word' do
+      longest = %w{ abe gabe gabby }.inject2 do |memo, word|
         memo.length > word.length ? memo : word
       end
       expect(longest).to eq "gabby"
