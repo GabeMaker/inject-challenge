@@ -4,17 +4,17 @@ describe Array do
 
   context 'with a block' do
 
-    xit "can add numbers together" do
+    it "can add numbers together" do
       # expect([1,2,3,4].inject { |memo, item| memo + item }).to eq 10
       expect([1,2,3,4].inject2{ |memo, item| memo + item} ).to eq 10
     end
 
-    xit "can minus numbers" do
+    it "can minus numbers" do
       # expect([1,2,3,4].inject { |memo, item| memo - item}).to eq -8
       expect([1,2,3,4].inject2 { |memo, item| memo - item} ).to eq -8
     end
 
-    xit "can multiply numbers" do
+    it "can multiply numbers" do
       # expect([1,2,3,4].inject { |memo, item| memo * item}).to eq 24
       expect([1,2,3,4].inject2 { |memo, item| memo * item}).to eq 24
     end
@@ -43,9 +43,9 @@ describe Array do
 
   context 'with an argument and a block' do
 
-    xit 'can add with a starting point' do
-      expect([1,2,3,4,5].inject(5) { |memo, n| memo + n } ).to eq 20
-      expect([3,4,7,9].inject(2) { |memo, n| memo + n } ).to eq 25
+    it 'can add with a starting point' do
+      # expect([1,2,3,4,5].inject(5) { |memo, n| memo + n } ).to eq 20
+      expect([1,2,3,4,5].inject2(5) { |memo, n| memo + n } ).to eq 20
     end
   end
 
