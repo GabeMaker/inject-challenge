@@ -1,6 +1,19 @@
 class Array
 
   def inject2 (argument=nil, &block)
+
+    # # methods need to accept Float objects
+    # # it doesn't look like we need to convert back though:
+    # # arr.inject(2.5) {|m,n| m*n} => 15.0 (float, despite being whole number)
+
+    if argument.is_a? (Fixnum) or argument.is_a? (Float) # why did:   || argument.is_a? (Float)    not work here?
+      memo = argument
+      self.each do |item|
+        memo = block.call(memo, item)
+      end
+      return memo
+    end 
+
     # refactoring opportunity next 7 lines: control-flow
     if argument == :+
       block = Proc.new { |memo, item| memo + item}
@@ -9,10 +22,7 @@ class Array
     elsif argument == :*
       block = Proc.new { |memo, item| memo * item}
     end
-      
-    # if argument is integer
-
-
+  
     memo = self.shift
     self.each do |item|
       memo = block.call(memo, item)

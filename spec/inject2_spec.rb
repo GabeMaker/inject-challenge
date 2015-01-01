@@ -47,6 +47,17 @@ describe Array do
       # expect([1,2,3,4,5].inject(5) { |memo, n| memo + n } ).to eq 20
       expect([1,2,3,4,5].inject2(5) { |memo, n| memo + n } ).to eq 20
     end
+  
+    it 'can subtract' do
+      # expect([1,2,3,4,5].inject(5) { |memo, n| memo - n } ).to eq -10
+      expect([1,2,3,4,5].inject2(5) { |memo, n| memo - n } ).to eq -10
+    end
+
+    it 'can multiply' do
+      # expect([1,2,3,4,5].inject(5) { |memo, n| memo * n } ).to eq 600
+      expect([1,2,3,4,5].inject2(5) { |memo, n| memo * n } ).to eq 600
+    end
+
   end
 
   context 'with an argument and with a symbol' do
