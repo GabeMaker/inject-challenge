@@ -1,9 +1,13 @@
 class Array
-  def inject2
-    @mem = 0
-    self.each do |x|
-      @mem = x + @mem
+  
+# { |mem, n| mem + n} - the block we are working with
+
+  def inject2 &block
+    memo = self.shift
+    self.each do |item|
+      memo = block.call(memo, item)
     end
-    @mem
+    memo
   end
+
 end

@@ -10,8 +10,8 @@ describe Array do
     end
 
     it "can minus numbers" do
-      # expect([5,1,2,3,4].inject { |memo, item| memo - item}).to eq -5
-      expect([1,2,3,4].inject2 { |memo, item| memo - item} ).to eq -5
+      # expect([1,2,3,4].inject { |memo, item| memo - item}).to eq -8
+      expect([1,2,3,4].inject2 { |memo, item| memo - item} ).to eq -8
     end
 
     # it "can multiply numbers" do
