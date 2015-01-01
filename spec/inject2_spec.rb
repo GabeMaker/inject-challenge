@@ -29,12 +29,15 @@ describe Array do
 
     end
     
-    xit 'can add subtract numbers' do
-      expect([1,2,3,4,5].inject(:-)).to eq -13
+    it 'can subtract numbers' do
+      # expect([1,2,3,4,5].inject(:-)).to eq -13
+      expect([1,2,3,4,5].inject2(:-)).to eq -13
     end
 
-    xit 'can multiply numbers in an array' do
-      expect([1,2,3,4,5].inject(:*)).to eq 120
+    it 'can multiply numbers in an array' do
+      # expect([1,2,3,4,5].inject(:*)).to eq 120
+      expect([1,2,3,4,5].inject2(:*)).to eq 120
+
     end
   end
 

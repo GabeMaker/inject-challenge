@@ -1,11 +1,15 @@
 class Array
-  
-# { |mem, n| mem + n} - the block we are working with
 
   def inject2 (symbol, &block)
+    # refactoring opportunity lines 5-11: control-flow
     if symbol == :+
       block = Proc.new { |memo, item| memo + item}
+    elsif symbol == :-
+      block = Proc.new { |memo, item| memo - item}
+    elsif symbol == :*
+      block = Proc.new { |memo, item| memo * item}
     end
+      
     memo = self.shift
     self.each do |item|
       memo = block.call(memo, item)
