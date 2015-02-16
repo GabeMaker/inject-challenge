@@ -2,25 +2,16 @@ class Array
 
   def diy_inject(initial=nil, symbol=nil)
 
-    if initial.class == Symbol
-      return self.diy_inject {|x,y| x.send(initial,y )}
-    end
+    return self.diy_inject {|x,y| x.send(initial,y )} if initial.class == Symbol
+    return self.diy_inject(initial) {|x,y| x.send(symbol, y)} if symbol.class == Symbol
 
-    if symbol.class == Symbol
-      return self.diy_inject(initial) {|x,y| x.send(symbol, y)}
-    end
-
-    if initial != nil
-      self.unshift(initial)
-    end
-  
+    self.unshift(initial) if initial != nil
     memo = self[0]
+    
     self.each_with_index do |item, index|
-      if index == 0
-        next
-      end
+      next if index == 0
       memo = yield memo, item
-    end 
+    end
     memo
   end
 
