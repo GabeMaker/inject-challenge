@@ -1,13 +1,10 @@
 class Array
 
-  def diy_inject(initial=:no_initial_given, symbol="no_symbol_given")
+  def diy_inject(initial=nil, symbol="no_symbol_given")
 
-    return self.diy_inject { |x,y| x + y} if initial == :+
-    return self.diy_inject { |x,y| x * y} if initial == :*
-    return self.diy_inject { |x,y| x - y} if initial == :-
-    return self.diy_inject { |x,y| x / y} if initial == :/
-    return self.diy_inject { |x,y| x ** y} if initial == :**
-    return self.diy_inject { |x,y| x % y} if initial == :%
+    if initial.class == Symbol
+      return self.diy_inject {|x,y| x.send(initial,y)}
+    end
 
     if symbol != "no_symbol_given"
       return self.diy_inject(initial) { |x,y| x + y} if symbol == :+
@@ -18,7 +15,7 @@ class Array
       return self.diy_inject(initial) { |x,y| x % y} if symbol == :%
     end
 
-    if initial != :no_initial_given
+    if initial != nil
       self.unshift(initial)
     end
   
@@ -33,5 +30,3 @@ class Array
   end
 
 end
-
-arr.inject(1,)
