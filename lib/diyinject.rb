@@ -1,18 +1,13 @@
 class Array
 
-  def diy_inject(initial=nil, symbol="no_symbol_given")
+  def diy_inject(initial=nil, symbol=nil)
 
     if initial.class == Symbol
-      return self.diy_inject {|x,y| x.send(initial,y)}
+      return self.diy_inject {|x,y| x.send(initial,y )}
     end
 
-    if symbol != "no_symbol_given"
-      return self.diy_inject(initial) { |x,y| x + y} if symbol == :+
-      return self.diy_inject(initial) { |x,y| x * y} if symbol == :*
-      return self.diy_inject(initial) { |x,y| x - y} if symbol == :-
-      return self.diy_inject(initial) { |x,y| x / y} if symbol == :/
-      return self.diy_inject(initial) { |x,y| x ** y} if symbol == :**
-      return self.diy_inject(initial) { |x,y| x % y} if symbol == :%
+    if symbol.class == Symbol
+      return self.diy_inject(initial) {|x,y| x.send(symbol, y)}
     end
 
     if initial != nil
