@@ -61,10 +61,19 @@ describe Array do
           expect([1,2,3,4].diy_inject(:*)).to eq 24
         end
 
-        it "can perform -, /, ** and % operations by passing symbols" do
+        it "can perform - operations" do
           expect([100,1,2,3].diy_inject(:-)).to eq 94
+        end
+
+        it "can perform / operations" do
           expect([100,2,2,5].diy_inject(:/)).to eq 5
+        end
+          
+        it "can perform ** operations" do
           expect([2,3,4].diy_inject(:**)).to eq 4096
+        end
+
+        it "can perform % operations" do
           expect([100, 51, 25, 13].diy_inject(:%)).to eq 11
         end
 
@@ -78,7 +87,6 @@ describe Array do
 
         it 'can sum some numbers including a number passed in the argument' do
           expect([1,2,3,4].diy_inject(2) { |sum, n| sum + n }).to eq 12
-          expect([5,6,7,8].diy_inject(5) { |sum, n| sum + n }).to eq 31
         end
 
       end
@@ -87,7 +95,6 @@ describe Array do
 
         it 'can multiply the product of some numbers by the argument' do
           expect([2,3,4,5].diy_inject(2) { |product, n| product * n }).to eq 240
-          expect([2,3,4,5].diy_inject(5) { |product, n| product * n }).to eq 600
         end
 
         it 'should return 0 when the argument is 0' do
@@ -100,24 +107,33 @@ describe Array do
 
         it "can perform addition without a block by passing :+" do
           expect([1,2,3,4].diy_inject(1, :+)).to eq 11
+        end
+
+        it "can add by passing :+ (with different initial argument)" do
           expect([1,2,3,4].diy_inject(2, :+)).to eq 12
         end
 
-        it "can perform multipication without a block by passing :*" do
+        it "can multiply without a block by passing :*" do
           expect([1,2,3,4].diy_inject(2, :*)).to eq 48
         end
 
-        it "can perform -, /, ** and % operations by passing symbols" do
-          expect([100,1,2,3].diy_inject(:-)).to eq 94
-          expect([100,2,2,5].diy_inject(:/)).to eq 5
-          expect([2,3,4].diy_inject(:**)).to eq 4096
-          expect([100, 51, 25, 13].diy_inject(:%)).to eq 11
+        it "can do - operations" do
+          expect([1,2,3,4].diy_inject(100, :-)).to eq 90
         end
 
+        it "can do / operations" do
+          expect([2,2,5,1].diy_inject(100,:/)).to eq 5
+        end
+          
+        it "can do ** operations" do
+          expect([1,2,3].diy_inject(2,:**)).to eq 64
+        end
+
+        it "can do % operations" do
+          expect([51, 25, 13].diy_inject(100, :%)).to eq 11
+        end
+        
       end
-
     end
-  
   end
-
 end
