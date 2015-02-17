@@ -8,11 +8,9 @@ class Array
     self.unshift(initial) if initial != nil
     memo = self[0]
     
-    self.each_with_index do |item, index|
-      next if index == 0
-      memo = yield memo, item
-    end
+    self[1..-1].each { |item| memo = yield memo, item }
     memo
+  
   end
 
 end
